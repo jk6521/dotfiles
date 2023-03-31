@@ -1,24 +1,24 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 14,
+    "height": 25,
     "width": 1350, 
     "spacing": 4,
     "modules-left": [
-        "clock",
+        "wlr/workspaces",
         "tray"
     ],
     "modules-center": [
-        "wlr/workspaces"
+        "clock"
     ],
     "modules-right": [
-        "idle_inhibitor",
-        "pulseaudio",
-        "network",
-        "bluetooth",
         "cpu",
         "memory",
+        "idle_inhibitor",
+        "bluetooth",
         "backlight",
+        "pulseaudio",
+        "network",
         "battery"
         
    ],
@@ -26,7 +26,7 @@
         "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate",
-        "format": "{name}: {icon}",
+        "format": "{icon}",
         "format-icons": {
             "1": "",
             "2": "",
@@ -37,6 +37,9 @@
             "focused": "",
             "default": ""
         }
+    },
+    "hyprland/window": {
+        "format": "{}"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -54,14 +57,16 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+        "format": " {usage}%",
+        "tooltip": false,
+        "interval": 1
     },
     "memory": {
-        "format": "{}% "
+        "format": " {}%",
+        "interval": 1
     },
     "backlight": {
-        "format": "{percent}% {icon}",
+        "format": "{icon}",
         "format-icons": [
             "",
             "",
@@ -79,10 +84,12 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "interval": 5,
+        "format": "{icon}",
+        "tooltip-format": "{capacity}% - {time}",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-alt": "{icon} {time}",
         "format-icons": [
             "",
             "",
@@ -91,24 +98,25 @@
             ""
         ]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰈀",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) \n\n{ipaddr}",
+        "format-icons": [
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"        ]
     },
     "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-muted": "󰖁",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -119,14 +127,18 @@
             "default": [
                 "",
                 "",
+                "󰕾",
                 ""
             ]
         },
-        "on-click": "pavucontrol"
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip-format": "{volume}"
     },
     "bluetooth": {
-        "format": " {status}",
-        "format-connected": " {device_alias}",
+        "format-on": "󰂯",
+        "format-off": "󰂲",
+        "format-connected": "󰂱",
         "on-click": "~/.config/waybar/./toggle_bluetooth.sh",
         "on-click-right": "blueberry",
         "format-connected-battery": " {device_alias {device_battery_percentage}%",
