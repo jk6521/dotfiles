@@ -1,5 +1,7 @@
 [Default Applications]
 video/x-matroska=vlc.desktop
+video/mp4=vlc.desktop
 
 [Added Associations]
 video/x-matroska=vlc.desktop;
+video/mp4=vlc.desktop;
