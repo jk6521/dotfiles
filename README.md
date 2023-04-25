@@ -26,7 +26,7 @@ Here are some details of what I used.
 | WM | [Hyprland](hyprland.org/) |
 | Terminal | [kitty](https://github.com/kovidgoyal/kitty) |
 | Shell | [zsh](https://www.zsh.org/) |
-| Editor | [NvChad](nvchad.com/)/[Vs Code](https://code.visualstudio.com/) |
+| Editor | [NvChad](https://nvchad.com/)/[Vs Code](https://code.visualstudio.com/) |
 | Application Launcher | [Wofi](https://hg.sr.ht/~scoopta/wofi) |
 | Bar | [Waybar](https://github.com/Alexays/Waybar) |
 | Wallpaper | [Hyprpaper](https://github.com/hyprwm/hyprpaper) |
